@@ -10,7 +10,6 @@ export default new Resolver({
         code: `
           import {flushLoader, addLoader} from 'can-import-module';
           import viewCallbacks from 'can-view-callbacks';
-          debugger;
           flushLoader();
 
           const tag = viewCallbacks.tag;
@@ -18,7 +17,16 @@ export default new Resolver({
           // noop static import since we handled it in the vite:stache plugin
           tag('can-import', function () {});
 
-          export default function (dynamicImportMap) {};`
+          export default function (dynamicImportMap) {
+            addLoader((moduleName) => {
+              if (!(moduleName.match(/[^\\\\\\\/]\\.([^.\\\\\\\/]+)$/) || [null]).pop()) {
+                moduleName += '.js';
+              }
+              if (moduleName in dynamicImportMap) {
+                return dynamicImportMap[moduleName]()
+              }
+            });
+          };`
       };
     }
     return null;
