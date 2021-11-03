@@ -1,0 +1,48 @@
+{
+  "name": "parcel-resolver-stache-import-module",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Julian Kern",
+  "license": "MIT",
+  "main": "dist/StacheDynamicImportResolver.js",
+  "module": "dist/StacheDynamicImportResolver.es.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pYr0x/parcel-resolver-stache-import-module.git"
+  },
+  "engines": {
+    "node": ">= 12.0.0",
+    "parcel": "^2.0.0"
+  },
+  "scripts": {
+    "dev": "tsc -p . -w --incremental",
+    "build": "rollup -c",
+    "format": "",
+    "lint": "",
+    "prepare": "npm run build",
+    "prepublishOnly": "",
+    "preversion": "",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "@parcel/diagnostic": "^2.0.0",
+    "@parcel/plugin": "^2.0.0",
+    "@parcel/source-map": "^2.0.0",
+    "@parcel/utils": "^2.0.0",
+    "consolidate": "^0.16.0",
+    "nullthrows": "^1.1.1",
+    "semver": "^5.4.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/node": "^16.11.0",
+    "rollup": "^2.58.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "can-view-callbacks": "^5.0.0",
+    "can-import-module": "git://github.com/canjs/can-import-module.git#hook-system"
+  }
+}
